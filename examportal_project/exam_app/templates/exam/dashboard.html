@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Horizontal Charts Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .chart-row {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      overflow-x: auto;
+      padding-bottom: 20px;
+    }
+
+    .chart-box {
+      min-width: 300px;
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      flex-shrink: 0;
+    }
+
+    .chart-box h3 {
+      text-align: center;
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    canvas {
+      max-width: 70%;
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Horizontal Chart Dashboard</h1>
+
+  <div class="chart-row">
+    <!-- Bar Chart -->
+    <div class="chart-box">
+      <h3>Bar Chart</h3>
+      <canvas id="barChart"></canvas>
+    </div>
+
+    <!-- Pie Chart -->
+    <div class="chart-box">
+      <h3>Pie Chart</h3>
+      <canvas id="pieChart"></canvas>
+    </div>
+
+    <!-- Doughnut Chart -->
+    <div class="chart-box">
+      <h3>Doughnut Chart</h3>
+      <canvas id="doughnutChart"></canvas>
+    </div>
+
+    <!-- Line Chart -->
+    <div class="chart-box">
+      <h3>Line Chart</h3>
+      <canvas id="lineChart"></canvas>
+    </div>
+
+    <!-- Histogram (Bar as Frequency) -->
+    <div class="chart-box">
+      <h3>Histogram</h3>
+      <canvas id="histogramChart"></canvas>
+    </div>
+  </div>
+
+  <script>
+    // Bar Chart
+    new Chart(document.getElementById('barChart'), {
+      type: 'bar',
+      data: {
+        labels: ['Alice', 'Bob', 'Charlie', 'David'],
+        datasets: [{
+          label: 'Marks',
+          data: [85, 75, 90, 65],
+          backgroundColor: '#3498db'
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    });
+
+    // Pie Chart
+    new Chart(document.getElementById('pieChart'), {
+      type: 'pie',
+      data: {
+        labels: ['Math', 'Science', 'English', 'History'],
+        datasets: [{
+          data: [25, 30, 20, 25],
+          backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#9b59b6']
+        }]
+      }
+    });
+
+    // Doughnut Chart
+    new Chart(document.getElementById('doughnutChart'), {
+      type: 'doughnut',
+      data: {
+        labels: ['A', 'B', 'C', 'F'],
+        datasets: [{
+          data: [40, 35, 15, 10],
+          backgroundColor: ['#2ecc71', '#f1c40f', '#e67e22', '#e74c3c']
+        }]
+      }
+    });
+
+    // Line Chart
+    new Chart(document.getElementById('lineChart'), {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+        datasets: [{
+          label: 'Progress (%)',
+          data: [60, 65, 70, 78, 85],
+          borderColor: '#1abc9c',
+          fill: false,
+          tension: 0.4
+        }]
+      }
+    });
+
+    // Histogram
+    new Chart(document.getElementById('histogramChart'), {
+      type: 'bar',
+      data: {
+        labels: ['10-19', '20-29', '30-39', '40-49', '50-59'],
+        datasets: [{
+          label: 'Age Frequency',
+          data: [4, 10, 15, 8, 3],
+          backgroundColor: '#7f8c8d'
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
+
+
+
