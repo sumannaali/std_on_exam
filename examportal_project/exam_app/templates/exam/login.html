@@ -1,88 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Login Page</title>
+  <meta charset="UTF-8" />
+  <title>Transparent Overlay Login</title>
   <style>
-    body {
-      background: #f0f2f5;
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
       font-family: Arial, sans-serif;
+      background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .overlay {
+      background: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+      height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
     }
 
-    .login-container {
-      background: white;
-      padding: 30px 40px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    .login-box {
+      background: rgba(255, 255, 255, 0.1); /* transparent white */
+      padding: 40px;
+      border-radius: 8px;
+      backdrop-filter: blur(5px);
       width: 300px;
     }
 
-    .login-container h2 {
+    .login-box h2 {
+      color: #fff;
       text-align: center;
+      margin-bottom: 30px;
+      font-weight: normal;
+    }
+
+    .input-group {
+      position: relative;
       margin-bottom: 20px;
     }
 
-    .login-container input[type="text"],
-    .login-container input[type="password"] {
+    .input-group input {
       width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+      padding: 12px 12px 12px 40px;
+      border: none;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.7);
+      font-size: 14px;
     }
 
-    .login-container button {
+    .input-group i {
+      position: absolute;
+      top: 50%;
+      left: 12px;
+      transform: translateY(-50%);
+      color: #555;
+    }
+
+    .options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .options label {
+      display: flex;
+      align-items: center;
+    }
+
+    .options input[type="checkbox"] {
+      margin-right: 5px;
+    }
+
+    .options a {
+      color: #00bfff;
+      text-decoration: none;
+    }
+
+    .login-btn {
       width: 100%;
-      padding: 10px;
-      background-color: #007bff;
+      padding: 12px;
+      background: #28a745;
       border: none;
-      color: white;
-      font-weight: bold;
-      border-radius: 5px;
+      border-radius: 4px;
+      color: #fff;
+      font-size: 16px;
       cursor: pointer;
     }
 
-    .login-container button:hover {
-      background-color: #0056b3;
-    }
-
-    .error {
-      color: red;
-      font-size: 14px;
-      margin-top: 10px;
-      text-align: center;
+    .login-btn:hover {
+      background: #218838;
     }
   </style>
+  <!-- Load Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
-<div class="login-container">
-  <h2>Login</h2>
-  <input type="text" id="username" placeholder="Username">
-  <input type="password" id="password" placeholder="Password">
-  <button onclick="login()">Login</button>
-  <div class="error" id="error-msg"></div>
-</div>
-
-<script>
-  function login() {
-    const user = document.getElementById("username").value.trim();
-    const pass = document.getElementById("password").value.trim();
-    const errorMsg = document.getElementById("error-msg");
-
-    if (user === "" || pass === "") {
-      errorMsg.textContent = "Please enter both username and password.";
-    } else {
-      errorMsg.textContent = "";
-      // You can add authentication logic here
-      alert("Login successful (placeholder)");
-    }
-  }
-</script>
-
+  <div class="overlay">
+    <div class="login-box">
+      <h2>Login</h2>
+      <form>
+        <div class="input-group">
+          <i class="fas fa-user"></i>
+          <input type="text" placeholder="Username" required>
+        </div>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" placeholder="Password" required>
+        </div>
+        <div class="options">
+          <label><input type="checkbox"> Remember me</label>
+          <a href="#">Need help?</a>
+        </div>
+        <button type="submit" class="login-btn">Login</button>
+        <div class="options" style="margin-top: 10px; justify-content: center;">
+          <a href="register.html">Create an account</a>
+        </div>
+      </form>
+    </div>
+  </div>
 </body>
 </html>
+
